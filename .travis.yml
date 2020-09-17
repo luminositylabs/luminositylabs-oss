@@ -1,6 +1,16 @@
 language: java
 os: linux
+dist: focal
 services: docker
+
+cache:
+  directories:
+    - ${HOME}/.m2
+
+env:
+  global:
+    - SETTINGS=".travis-ci/settings.xml"
+    - PROFILES="gpg,release-sign-artifacts,sonatype-deployment,sonatype-snapshots,sonatype-staging,sonatype-releases"
 
 install:
   - source .travis-ci/install-gpg.sh
@@ -8,26 +18,25 @@ install:
   - source .travis-ci/install-maven.sh
 
 script:
-  - mvn -U -V -s settings.xml -Pgpg,release-sign-artifacts,sonatype-snapshots,sonatype-staging,sonatype-releases -Djavadoc.path=`which javadoc` dependency:list-repositories
-  - mvn -U -V -s settings.xml -Pgpg,release-sign-artifacts,sonatype-snapshots,sonatype-staging,sonatype-releases -Djavadoc.path=`which javadoc` dependency:tree
-  - mvn -U -V -s settings.xml -Pgpg,release-sign-artifacts,sonatype-snapshots,sonatype-staging,sonatype-releases -Djavadoc.path=`which javadoc` help:active-profiles clean install
-  - mvn -U -V -s settings.xml -Pgpg,release-sign-artifacts,sonatype-snapshots,sonatype-staging,sonatype-releases -Djavadoc.path=`which javadoc` site site:stage
+  - mvn -U -V -s "${SETTINGS}" -P${PROFILES} -Djavadoc.path=`which javadoc` dependency:list-repositories dependency:tree help:active-profiles clean install site site:stage
 
 jobs:
   include:
-  - dist: xenial
+  - stage: mvn build
     env: JAVA_VERSION=8
-  - dist: focal
+  - stage: mvn build
+    dist: xenial
     env: JAVA_VERSION=8
-  - dist: xenial
+  - stage: mvn build
+    dist: xenial
     env: JAVA_VERSION=11
-  - dist: focal
-    env: JAVA_VERSION=11
-  - dist: focal
-    env: CBD="/usr/src/build" P=luminositylabs-oss I=luminositylabs/maven T=3.6.3_openjdk-11.0.8_zulu-alpine-11.41
+  - stage: docker mvn build
+    env: CBD="/usr/src/build" P=luminositylabs-oss I=luminositylabs/maven T=3.6.3_openjdk-11.0.8_zulu-11.0.8-1
     install: source .travis-ci/install-gpg.sh
     script:
-    - docker container run --rm -it -v "$(pwd)":"${CBD}" -v ${P}-${T}-mvn-repo:/root/.m2 -w "${CBD}" ${I}:${T} mvn -U -V -s settings.xml -Psonatype-snapshots,sonatype-staging,sonatype-releases dependency:list-repositories
-    - docker container run --rm -it -v "$(pwd)":"${CBD}" -v ${P}-${T}-mvn-repo:/root/.m2 -w "${CBD}" ${I}:${T} mvn -U -V -s settings.xml -Psonatype-snapshots,sonatype-staging,sonatype-releases dependency:tree
-    - docker container run --rm -it -v "$(pwd)":"${CBD}" -v ${P}-${T}-mvn-repo:/root/.m2 -w "${CBD}" ${I}:${T} mvn -U -V -s settings.xml -Psonatype-snapshots,sonatype-staging,sonatype-releases help:active-profiles clean install
-    - docker container run --rm -it -v "$(pwd)":"${CBD}" -v ${P}-${T}-mvn-repo:/root/.m2 -w "${CBD}" ${I}:${T} mvn -U -V -s settings.xml -Psonatype-snapshots,sonatype-staging,sonatype-releases site site:stage
+    - docker container run --rm -it -v "$(pwd)":"${CBD}" -v ${HOME}/.gnupg:/root/.gnupg -v ${P}-${T}-mvn-repo:/root/.m2 -w "${CBD}" ${I}:${T} mvn -U -V -s "${SETTINGS}" -P${PROFILES} dependency:list-repositories dependency:tree help:active-profiles clean install site site:stage
+  - stage: mvn deploy
+    dist: focal
+    env: JAVA_VERSION=11
+    script:
+    - mvn -U -V -s "${SETTINGS}" -P${PROFILES} -Djavadoc.path=`which javadoc` dependency:list-repositories dependency:tree help:active-profiles clean install site site:stage deploy
