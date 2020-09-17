@@ -20,7 +20,7 @@
 
     <groupId>co.luminositylabs.oss</groupId>
     <artifactId>luminositylabs-oss-parent</artifactId>
-    <version>0.1.13-SNAPSHOT</version>
+    <version>0.1.14-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Luminosity Labs Open Source Software Parent</name>
@@ -78,7 +78,7 @@
         <download-maven-plugin.version>1.6.0</download-maven-plugin.version>
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
         <git-commit-id-plugin.version>4.0.2</git-commit-id-plugin.version>
-        <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
         <maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
         <maven-archetype-plugin.version>3.2.0</maven-archetype-plugin.version>
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
