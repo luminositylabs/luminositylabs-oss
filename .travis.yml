@@ -25,6 +25,8 @@ jobs:
   - stage: mvn build
     env: JAVA_VERSION=8
   - stage: mvn build
+    env: JAVA_VERSION=11
+  - stage: mvn build
     dist: xenial
     env: JAVA_VERSION=8
   - stage: mvn build
@@ -36,7 +38,8 @@ jobs:
     script:
     - docker container run --rm -it -v "$(pwd)":"${CBD}" -v ${HOME}/.gnupg:/root/.gnupg -v ${P}-${T}-mvn-repo:/root/.m2 -w "${CBD}" ${I}:${T} mvn -U -V -s "${SETTINGS}" -P${PROFILES} dependency:list-repositories dependency:tree help:active-profiles clean install site site:stage
   - stage: mvn deploy
+    if: branch in (main) AND type not in (pull_request)
     dist: focal
     env: JAVA_VERSION=11
     script:
-    - mvn -U -V -s "${SETTINGS}" -P${PROFILES} -Djavadoc.path=`which javadoc` dependency:list-repositories dependency:tree help:active-profiles clean install site site:stage deploy
+      - mvn -U -V -s "${SETTINGS}" -P${PROFILES} -Djavadoc.path=`which javadoc` deploy
