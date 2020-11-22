@@ -5,22 +5,23 @@
     <parent>
         <groupId>co.luminositylabs.oss.distributions</groupId>
         <artifactId>distributions</artifactId>
-        <version>0.0.3</version>
+        <version>0.1.18-SNAPSHOT</version>
     </parent>
 
     <artifactId>payara-full</artifactId>
-    <version>4.1.1.162-SNAPSHOT</version>
+    <version>5.2020.6-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>payara-full</name>
 
     <properties>
-        <download.url>https://s3-eu-west-1.amazonaws.com/payara.co/Payara+Downloads/Payara+4.1.1.161/payara-4.1.1.161.zip</download.url>
-        <download.md5.checksum>14c816e0621d2c654f0152a535b05984</download.md5.checksum>
+        <payara.version>5.2020.6</payara.version>
+        <download.url>https://search.maven.org/remotecontent?filepath=fish/payara/distributions/payara/${payara.version}/payara-${payara.version}.zip</download.url>
+        <download.sha1.checksum>609d1df91bf6191620f355f701faed5271b64d63</download.sha1.checksum>
     </properties>
 
     <build>
-        <finalName>payara-4.1.1.161.zip</finalName>
+        <finalName>payara-${payara.version}.zip</finalName>
         <plugins>
             <plugin>
                 <groupId>com.googlecode.maven-download-plugin</groupId>
@@ -34,7 +35,7 @@
                         </goals>
                         <configuration>
                             <url>${download.url}</url>
-                            <md5>${download.md5.checksum}</md5>
+                            <sha1>${download.sha1.checksum}</sha1>
                         </configuration>
                     </execution>
                 </executions>
