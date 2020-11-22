@@ -4,7 +4,6 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/distributions" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/distributions/payara-full" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/distributions/payara-web" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/testing" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/testing/nio2-filewalker" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/testing/nio2-filewalker/src/main/java" charset="UTF-8" />
