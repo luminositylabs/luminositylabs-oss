@@ -1,0 +1,90 @@
+name: Luminosity Labs Open Source Software Parent CI
+
+on: [push, pull_request]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build-codebase:
+    strategy:
+      matrix:
+        os: [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04]
+        java_version: [8, 11]
+        maven_version: [3.6.3]
+        include:
+          - os: ubuntu-20.04
+            java_version: 11
+            maven_version: 3.6.3
+            maven_deploy: true
+            docker_build: true
+    name: Build on OS ${{ matrix.os }} with Maven ${{ matrix.maven_version }} using Zulu ${{ matrix.java_version }}
+    runs-on: ${{ matrix.os }}
+    env:
+      JAVA_HOME: /usr/lib/jvm/zulu${{ matrix.java_version }}-ca-amd64
+      MAVEN_HOME: /usr/share/maven
+      MAVEN_PROPS: -Djavadoc.path=`which javadoc`
+      PROFILES: gpg,release-sign-artifacts,sonatype-deployment,sonatype-snapshots,sonatype-staging,sonatype-releases
+      SETTINGS: .github/settings.xml
+
+    steps:
+    - name: Checkout Source
+      uses: actions/checkout@v2
+
+    - name: Install GPG and generate test key
+      run: .github/install-gpg.sh
+
+    - name: Install Zulu OpenJDK
+      run: .github/install-zulu${{ matrix.java_version }}.sh
+
+    - name: Install Maven
+      run: .github/install-maven.sh
+
+    - name: Setup Maven repository cache
+      uses: actions/cache@v2
+      env:
+        cache-name: m2repo
+      with:
+        path: ~/.m2/repository
+        key: ${{ env.cache-name }}-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ env.cache-name }}-
+
+    - name: Log github.ref
+      run: echo "${{ github.ref }}"
+
+    - name: List Maven repositories
+      run: mvn -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} dependency:list-repositories
+
+    - name: Show Maven dependency tree
+      run: mvn -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} dependency:tree
+
+    - name: Show Maven active profiles
+      run: mvn -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} help:active-profiles
+
+    - name: Show Maven effective POM
+      run: mvn -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} help:effective-pom
+
+    - name: Maven build/test
+      run: mvn -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} clean install
+
+    - name: Maven generate site
+      run: mvn -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} site site:stage
+
+    - name: Maven deploy
+      if: ${{ matrix.maven_deploy && (github.ref == 'refs/heads/main') && (github.event_name != 'pull_request')  }}
+      env:
+        OSSRHU: ${{ secrets.OSSRHU }}
+        OSSRHT: ${{ secrets.OSSRHT }}
+      run: mvn -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} deploy
+
+    - name: Docker maven build
+      if: ${{ matrix.docker_build }}
+      env:
+        maven_docker_container_image_repo: luminositylabs
+        maven_docker_container_image_name: maven
+        maven_docker_container_image_tag: 3.6.3_openjdk-11.0.9.1_zulu-alpine-11.43.55
+        CBD: /usr/src/build
+        P: luminositylabs-oss
+      run: docker container run --rm -i -v "$(pwd)":"${CBD}" -v ${HOME}/.gnupg:/root/.gnupg -v ${P}-${{ env.maven_docker_container_image_tag }}-mvn-repo:/root/.m2 -w "${CBD}" ${{ env.maven_docker_container_image_repo }}/${{ env.maven_docker_container_image_name }}:${{ env.maven_docker_container_image_tag }} mvn -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} dependency:list-repositories dependency:tree help:active-profiles clean install site site:stage
