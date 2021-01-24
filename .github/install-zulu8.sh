@@ -4,7 +4,7 @@ set -euf
 
 AZUL_GPG_KEY=0xB1998361219BD9C9
 ZULU_VERSION=8
-ZULU_RELEASE=8.0.275-3
+ZULU_RELEASE=8.0.282-1
 
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys ${AZUL_GPG_KEY}
 sudo apt-add-repository 'deb http://repos.azulsystems.com/ubuntu stable main'
