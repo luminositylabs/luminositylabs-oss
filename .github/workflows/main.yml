@@ -84,7 +84,7 @@ jobs:
       env:
         maven_docker_container_image_repo: luminositylabs
         maven_docker_container_image_name: maven
-        maven_docker_container_image_tag: 3.6.3_openjdk-11.0.9.1_zulu-alpine-11.43.55
+        maven_docker_container_image_tag: 3.6.3_openjdk-11.0.10_zulu-alpine-11.45.27
         CBD: /usr/src/build
         P: luminositylabs-oss
       run: docker container run --rm -i -v "$(pwd)":"${CBD}" -v ${HOME}/.gnupg:/root/.gnupg -v ${P}-${{ env.maven_docker_container_image_tag }}-mvn-repo:/root/.m2 -w "${CBD}" ${{ env.maven_docker_container_image_repo }}/${{ env.maven_docker_container_image_name }}:${{ env.maven_docker_container_image_tag }} mvn -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} dependency:list-repositories dependency:tree help:active-profiles clean install site site:stage
