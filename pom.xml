@@ -20,7 +20,7 @@
 
     <groupId>co.luminositylabs.oss</groupId>
     <artifactId>luminositylabs-oss-parent</artifactId>
-    <version>0.1.22</version>
+    <version>0.1.23-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Luminosity Labs Open Source Software Parent</name>
@@ -46,7 +46,7 @@
     <scm>
         <url>http://bitbucket.com/luminositylabs/luminositylabs-oss</url>
         <connection>scm:git:https://bitbucket.org/luminositylabs/luminositylabs-oss.git</connection>
-        <tag>luminositylabs-oss-parent-0.1.22</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
