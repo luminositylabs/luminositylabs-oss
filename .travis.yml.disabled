@@ -34,7 +34,7 @@ jobs:
     dist: xenial
     env: JAVA_VERSION=11
   - stage: docker mvn build
-    env: CBD="/usr/src/build" P=luminositylabs-oss I=luminositylabs/maven T=3.8.1_openjdk-11.0.10_zulu-alpine-11.45.27
+    env: CBD="/usr/src/build" P=luminositylabs-oss I=luminositylabs/maven T=3.8.1_openjdk-11.0.11_zulu-alpine-11.48.21
     install: source .travis-ci/install-gpg.sh
     script:
     - docker container run --rm -it -v "$(pwd)":"${CBD}" -v ${HOME}/.gnupg:/root/.gnupg -v ${P}-${T}-mvn-repo:/root/.m2 -w "${CBD}" ${I}:${T} mvn -U -V -s "${SETTINGS}" -P${PROFILES} ${MAVEN_PROPS} dependency:list-repositories dependency:tree help:active-profiles clean install site site:stage
