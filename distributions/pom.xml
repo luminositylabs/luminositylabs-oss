@@ -5,7 +5,7 @@
     <parent>
         <groupId>co.luminositylabs.oss</groupId>
         <artifactId>luminositylabs-oss-parent</artifactId>
-        <version>0.1.18-SNAPSHOT</version>
+        <version>0.1.23-SNAPSHOT</version>
     </parent>
 
     <groupId>co.luminositylabs.oss.distributions</groupId>
