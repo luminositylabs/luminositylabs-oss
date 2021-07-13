@@ -77,7 +77,7 @@
         <directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
         <download-maven-plugin.version>1.6.6</download-maven-plugin.version>
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
-        <git-commit-id-plugin.version>4.0.5</git-commit-id-plugin.version>
+        <git-commit-id-maven-plugin.version>5.0.0</git-commit-id-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
         <maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
         <maven-archetype-plugin.version>3.2.0</maven-archetype-plugin.version>
@@ -215,6 +215,41 @@
                     <groupId>com.googlecode.maven-download-plugin</groupId>
                     <artifactId>download-maven-plugin</artifactId>
                     <version>${download-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>io.github.git-commit-id</groupId>
+                    <artifactId>git-commit-id-maven-plugin</artifactId>
+                    <version>${git-commit-id-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>git-describe</id>
+                            <goals>
+                                <goal>revision</goal>
+                            </goals>
+                            <configuration>
+                                <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                                <generateGitPropertiesFilename>${project.build.outputDirectory}/META-INF/git.properties</generateGitPropertiesFilename>
+                                <includeOnlyProperties>
+                                    <property>git.branch$</property>
+                                    <!--<property>git.build.host$</property>-->
+                                    <property>git.build.number$</property>
+                                    <property>git.build.number.unique$</property>
+                                    <property>git.build.time$</property>
+                                    <property>git.build.user.email$</property>
+                                    <property>git.build.user.name$</property>
+                                    <property>git.build.version$</property>
+                                    <property>git.closest.tag.commit.count$</property>
+                                    <property>git.closest.tag.name$</property>
+                                    <property>git.commit.id$</property>
+                                    <property>git.commit.id.abbrev$</property>
+                                    <property>git.commit.user.email$</property>
+                                    <property>git.commit.user.name$</property>
+                                    <property>git.commit.time$</property>
+                                    <property>git.tags$</property>
+                                </includeOnlyProperties>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -529,41 +564,6 @@
                             </goals>
                             <configuration>
                                 <destFile>${project.build.directory}/jacoco-it.exec</destFile>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>pl.project13.maven</groupId>
-                    <artifactId>git-commit-id-plugin</artifactId>
-                    <version>${git-commit-id-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>git-describe</id>
-                            <goals>
-                                <goal>revision</goal>
-                            </goals>
-                            <configuration>
-                                <generateGitPropertiesFile>true</generateGitPropertiesFile>
-                                <generateGitPropertiesFilename>${project.build.outputDirectory}/META-INF/git.properties</generateGitPropertiesFilename>
-                                <includeOnlyProperties>
-                                    <property>git.branch$</property>
-                                    <!--<property>git.build.host$</property>-->
-                                    <property>git.build.number$</property>
-                                    <property>git.build.number.unique$</property>
-                                    <property>git.build.time$</property>
-                                    <property>git.build.user.email$</property>
-                                    <property>git.build.user.name$</property>
-                                    <property>git.build.version$</property>
-                                    <property>git.closest.tag.commit.count$</property>
-                                    <property>git.closest.tag.name$</property>
-                                    <property>git.commit.id$</property>
-                                    <property>git.commit.id.abbrev$</property>
-                                    <property>git.commit.user.email$</property>
-                                    <property>git.commit.user.name$</property>
-                                    <property>git.commit.time$</property>
-                                    <property>git.tags$</property>
-                                </includeOnlyProperties>
                             </configuration>
                         </execution>
                     </executions>
