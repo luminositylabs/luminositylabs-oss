@@ -6,6 +6,12 @@
         <ignoreVersion type="regex">.*-[M|alpha|beta].*</ignoreVersion>
     </ignoreVersions>
     <rules>
+        <!-- Pin git-commit-id-plugin version to version before terminal V4 release -->
+        <rule groupId="pl.project13.maven" artifactId="git-commit-id-plugin">
+            <ignoreVersions>
+                <ignoreVersion type="regex">4.9.9</ignoreVersion>
+            </ignoreVersions>
+        </rule>
         <!-- Pin testng version to pre-V7 -->
         <rule groupId="org.testng" artifactId="testng" comparisonMethod="maven">
             <ignoreVersions>
