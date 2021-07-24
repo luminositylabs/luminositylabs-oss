@@ -13,9 +13,15 @@
             </ignoreVersions>
         </rule>
         <!-- Pin testng version to pre-V7 -->
-        <rule groupId="org.testng" artifactId="testng" comparisonMethod="maven">
+        <rule groupId="org.testng" artifactId="testng">
             <ignoreVersions>
                 <ignoreVersion type="regex">7\..*</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+        <!-- Ignore logback version with groovyless suffix -->
+        <rule groupId="ch.qos.logback">
+            <ignoreVersions>
+                <ignoreVersion type="regex">.*-groovyless</ignoreVersion>
             </ignoreVersions>
         </rule>
     </rules>
