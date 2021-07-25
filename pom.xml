@@ -25,7 +25,7 @@
 
     <name>Luminosity Labs Open Source Software Parent</name>
     <description>Luminosity Labs Open Source Software</description>
-    <url>http://bitbucket.com/luminositylabs/luminositylabs-oss</url>
+    <url>https://github.com/luminositylabs/luminositylabs-oss</url>
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -39,13 +39,13 @@
             <name>Luminosity Labs Team</name>
             <email>luminositylabs@gmail.com</email>
             <organization>Luminosity Labs LLC</organization>
-            <organizationUrl>http://bitbucket.com/luminositylabs</organizationUrl>
+            <organizationUrl>https://github.com/luminositylabs</organizationUrl>
         </developer>
     </developers>
 
     <scm>
-        <url>http://bitbucket.com/luminositylabs/luminositylabs-oss</url>
-        <connection>scm:git:https://bitbucket.org/luminositylabs/luminositylabs-oss.git</connection>
+        <url>https://github.com/luminositylabs/luminositylabs-oss</url>
+        <connection>scm:git:https://github.com/luminositylabs/luminositylabs-oss.git</connection>
         <tag>HEAD</tag>
     </scm>
 
