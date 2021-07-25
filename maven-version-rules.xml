@@ -1,25 +1,25 @@
 <ruleset comparisonMethod="maven"
          xmlns="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0 http://mojo.codehaus.org/versions-maven-plugin/xsd/rule-2.0.0.xsd">
+         xsi:schemaLocation="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0 https://www.mojohaus.org/versions-maven-plugin/xsd/rule-2.0.0.xsd">
     <ignoreVersions>
         <ignoreVersion type="regex">.*-[M|alpha|beta].*</ignoreVersion>
     </ignoreVersions>
     <rules>
         <!-- Pin git-commit-id-plugin version to version before terminal V4 release -->
-        <rule groupId="pl.project13.maven" artifactId="git-commit-id-plugin">
+        <rule groupId="pl.project13.maven" artifactId="git-commit-id-plugin" comparisonMethod="maven">
             <ignoreVersions>
                 <ignoreVersion type="regex">4.9.9</ignoreVersion>
             </ignoreVersions>
         </rule>
         <!-- Pin testng version to pre-V7 -->
-        <rule groupId="org.testng" artifactId="testng">
+        <rule groupId="org.testng" artifactId="testng" comparisonMethod="maven">
             <ignoreVersions>
                 <ignoreVersion type="regex">7\..*</ignoreVersion>
             </ignoreVersions>
         </rule>
         <!-- Ignore logback version with groovyless suffix -->
-        <rule groupId="ch.qos.logback">
+        <rule groupId="ch.qos.logback" comparisonMethod="maven">
             <ignoreVersions>
                 <ignoreVersion type="regex">.*-groovyless</ignoreVersion>
             </ignoreVersions>
