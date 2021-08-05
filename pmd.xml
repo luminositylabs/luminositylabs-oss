@@ -4,7 +4,7 @@
          name="PMD Ruleset"
 >
     <description>
-        This ruleset is adapted from the default maven PMG plugin ruleset which can be found here:
+        This ruleset is adapted from the default maven PMD plugin ruleset which can be found here:
         https://gitbox.apache.org/repos/asf?p=maven-pmd-plugin.git;a=blob_plain;f=src/main/resources/rulesets/java/maven-pmd-plugin-default.xml;hb=HEAD
         It contains the rules of the old (pre PMD 6.0.0) rulesets java-basic, java-empty, java-imports,
         java-unnecessary, java-unusedcode. (see https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html)
