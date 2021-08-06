@@ -5,7 +5,7 @@
     <parent>
         <groupId>co.luminositylabs.oss.distributions</groupId>
         <artifactId>distributions</artifactId>
-        <version>0.1.23-SNAPSHOT</version>
+        <version>0.2.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>payara-full</artifactId>
@@ -15,9 +15,9 @@
     <name>payara-full</name>
 
     <properties>
-        <payara.version>5.2020.6</payara.version>
+        <payara.version>5.2021.5</payara.version>
         <download.url>https://search.maven.org/remotecontent?filepath=fish/payara/distributions/payara/${payara.version}/payara-${payara.version}.zip</download.url>
-        <download.sha1.checksum>609d1df91bf6191620f355f701faed5271b64d63</download.sha1.checksum>
+        <download.sha1.checksum>c0ed3809060d56d20f240066757ed1188e312b6b</download.sha1.checksum>
     </properties>
 
     <build>

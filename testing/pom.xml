@@ -5,12 +5,12 @@
     <parent>
         <groupId>co.luminositylabs.oss</groupId>
         <artifactId>luminositylabs-oss-parent</artifactId>
-        <version>0.0.7</version>
+        <version>0.2.2-SNAPSHOT</version>
     </parent>
 
     <groupId>co.luminositylabs.oss.testing</groupId>
     <artifactId>testing</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>testing</name>
