@@ -74,7 +74,7 @@
         <spotbugs.skip>false</spotbugs.skip>
         <!-- Plugin versioning -->
         <build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
-        <directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
+        <directory-maven-plugin.version>1.0</directory-maven-plugin.version>
         <download-maven-plugin.version>1.6.7</download-maven-plugin.version>
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
         <git-commit-id-maven-plugin.version>5.0.0</git-commit-id-maven-plugin.version>
@@ -107,12 +107,12 @@
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-surefire-report-plugin.version>2.22.2</maven-surefire-report-plugin.version>
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
-        <spotbugs-maven-plugin.version>4.3.0</spotbugs-maven-plugin.version>
+        <spotbugs-maven-plugin.version>4.4.1</spotbugs-maven-plugin.version>
         <versions-maven-plugin.version>2.8.1</versions-maven-plugin.version>
         <!-- Dependency versions -->
         <dependency.checkstyle.version>9.0</dependency.checkstyle.version>
         <dependency.logback.version>1.2.6</dependency.logback.version>
-        <dependency.pmd.version>6.38.0</dependency.pmd.version>
+        <dependency.pmd.version>6.39.0</dependency.pmd.version>
         <dependency.slf4j.version>1.7.32</dependency.slf4j.version>
         <dependency.spotbugs.version>4.4.1</dependency.spotbugs.version>
         <dependency.testng.version>6.14.3</dependency.testng.version>
