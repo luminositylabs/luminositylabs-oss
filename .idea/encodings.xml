@@ -4,10 +4,23 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/distributions" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/distributions/payara-full" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/distributions/payara-full/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/distributions/payara-full/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/distributions/payara-full/src/main/resources-filtered" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/distributions/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/distributions/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/distributions/src/main/resources-filtered" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources-filtered" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/testing" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/testing/nio2-filewalker" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/testing/nio2-filewalker/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/testing/nio2-filewalker/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/testing/nio2-filewalker/src/main/resources-filtered" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/testing/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/testing/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/testing/src/main/resources-filtered" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
