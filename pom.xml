@@ -84,8 +84,8 @@
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
-        <maven-compiler-plugin.version>3.10.0</maven-compiler-plugin.version>
-        <maven-dependency-plugin.version>3.2.0</maven-dependency-plugin.version>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+        <maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
         <maven-ear-plugin.version>3.2.0</maven-ear-plugin.version>
         <maven-ejb-plugin.version>3.0.1</maven-ejb-plugin.version>
@@ -98,7 +98,7 @@
         <maven-javadoc-plugin.version>3.3.2</maven-javadoc-plugin.version>
         <maven-jxr-plugin.version>3.1.1</maven-jxr-plugin.version>
         <maven-pmd-plugin.version>3.16.0</maven-pmd-plugin.version>
-        <maven-project-info-reports-plugin.version>3.2.1</maven-project-info-reports-plugin.version>
+        <maven-project-info-reports-plugin.version>3.2.2</maven-project-info-reports-plugin.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
         <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
@@ -108,13 +108,13 @@
         <maven-surefire-report-plugin.version>2.22.2</maven-surefire-report-plugin.version>
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <spotbugs-maven-plugin.version>4.5.3.0</spotbugs-maven-plugin.version>
-        <versions-maven-plugin.version>2.9.0</versions-maven-plugin.version>
+        <versions-maven-plugin.version>2.10.0</versions-maven-plugin.version>
         <!-- Dependency versions -->
         <dependency.checkstyle.version>9.3</dependency.checkstyle.version>
-        <dependency.logback.version>1.2.10</dependency.logback.version>
-        <dependency.pmd.version>6.42.0</dependency.pmd.version>
+        <dependency.logback.version>1.2.11</dependency.logback.version>
+        <dependency.pmd.version>6.43.0</dependency.pmd.version>
         <dependency.slf4j.version>1.7.36</dependency.slf4j.version>
-        <dependency.spotbugs.version>4.5.3</dependency.spotbugs.version>
+        <dependency.spotbugs.version>4.6.0</dependency.spotbugs.version>
         <dependency.testng.version>6.14.3</dependency.testng.version>
     </properties>
 
