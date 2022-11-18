@@ -30,7 +30,7 @@ jobs:
 
     steps:
     - name: Checkout Source
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Install GPG and generate test key
       run: .github/install-gpg.sh
@@ -42,7 +42,7 @@ jobs:
       run: .github/install-maven.sh
 
     - name: Setup Maven repository cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       env:
         cache-name: m2repo
       with:
