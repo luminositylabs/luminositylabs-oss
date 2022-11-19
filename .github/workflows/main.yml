@@ -30,7 +30,7 @@ jobs:
 
     steps:
     - name: Checkout Source
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Install GPG and generate test key
       run: .github/install-gpg.sh
@@ -42,7 +42,7 @@ jobs:
       run: .github/install-maven.sh
 
     - name: Setup Maven repository cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       env:
         cache-name: m2repo
       with:
@@ -84,7 +84,7 @@ jobs:
       env:
         maven_docker_container_image_repo: luminositylabs
         maven_docker_container_image_name: maven
-        maven_docker_container_image_tag: 3.8.6_openjdk-11.0.17_zulu-alpine-11.60.19
+        maven_docker_container_image_tag: 3.8.6_openjdk-8u352_zulu-alpine-8.66.0.15
         CBD: /usr/src/build
         P: luminositylabs-oss
       run: docker container run --rm -i -v "$(pwd)":"${CBD}" -v ${HOME}/.gnupg:/root/.gnupg -v ${P}-${{ env.maven_docker_container_image_tag }}-mvn-repo:/root/.m2 -w "${CBD}" ${{ env.maven_docker_container_image_repo }}/${{ env.maven_docker_container_image_name }}:${{ env.maven_docker_container_image_tag }} mvn -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} dependency:list-repositories dependency:tree help:active-profiles clean install site site:stage

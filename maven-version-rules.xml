@@ -18,5 +18,11 @@
                 <ignoreVersion type="regex">7\..*</ignoreVersion>
             </ignoreVersions>
         </rule>
+        <!-- Pin logback version to pre-V1.4 -->
+        <rule groupId="ch.qos.logback" comparisonMethod="maven">
+            <ignoreVersions>
+                <ignoreVersion type="regex">1\.4\..*</ignoreVersion>
+            </ignoreVersions>
+        </rule>
     </rules>
 </ruleset>
