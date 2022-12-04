@@ -6,10 +6,10 @@
         <ignoreVersion type="regex">.*-[M|alpha|beta].*</ignoreVersion>
     </ignoreVersions>
     <rules>
-        <!-- Pin testng version to pre-V7 -->
+        <!-- Pin testng version to pre 7.6.x -->
         <rule groupId="org.testng" artifactId="testng" comparisonMethod="maven">
             <ignoreVersions>
-                <ignoreVersion type="regex">7\..*</ignoreVersion>
+                <ignoreVersion type="regex">7\.6\..*</ignoreVersion>
             </ignoreVersions>
         </rule>
     </rules>
