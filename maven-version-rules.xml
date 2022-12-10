@@ -9,7 +9,7 @@
         <!-- Pin testng version to pre 7.6.x -->
         <rule groupId="org.testng" artifactId="testng" comparisonMethod="maven">
             <ignoreVersions>
-                <ignoreVersion type="regex">7\.6\..*</ignoreVersion>
+                 <ignoreVersion type="regex">7\.[6-9]\..*</ignoreVersion>
             </ignoreVersions>
         </rule>
     </rules>
