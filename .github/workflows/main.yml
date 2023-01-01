@@ -12,13 +12,17 @@ jobs:
       matrix:
         os: [ubuntu-22.04]
         jdk_version: [11.0.17-zulu, 17.0.5-zulu, 19.0.1-zulu]
-        maven_version: [3.8.6]
+        maven_version: [3.8.7]
         include:
           - os: ubuntu-22.04
             jdk_version: 11.0.17-zulu
-            maven_version: 3.8.6
+            zulu_version: 11.60.19
+            maven_version: 3.8.7
             maven_deploy: true
             docker_build: true
+            maven_docker_container_image_repo: luminositylabs
+            maven_docker_container_image_name: maven
+            maven_docker_container_image_tag: 3.8.7_openjdk-11.0.17_zulu-alpine-11.60.19
     name: Build on OS ${{ matrix.os }} with Maven ${{ matrix.maven_version }} using JDK ${{ matrix.jdk_version }}
     runs-on: ${{ matrix.os }}
     env:
@@ -94,4 +98,4 @@ jobs:
         maven_docker_container_image_tag: 3.8.6_openjdk-11.0.17_zulu-alpine-11.60.19
         CBD: /usr/src/build
         P: luminositylabs-oss
-      run: docker container run --rm -i -v "$(pwd)":"${CBD}" -v ${HOME}/.gnupg:/root/.gnupg -v ${P}-${{ env.maven_docker_container_image_tag }}-mvn-repo:/root/.m2 -w "${CBD}" ${{ env.maven_docker_container_image_repo }}/${{ env.maven_docker_container_image_name }}:${{ env.maven_docker_container_image_tag }} mvn -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} dependency:list-repositories dependency:tree help:active-profiles clean install site site:stage
+      run: docker container run --rm -i -v "$(pwd)":"${CBD}" -v ${HOME}/.gnupg:/root/.gnupg -v ${P}-${{ matrix.maven_docker_container_image_tag }}-mvn-repo:/root/.m2 -w "${CBD}" ${{ matrix.maven_docker_container_image_repo }}/${{ matrix.maven_docker_container_image_name }}:${{ matrix.maven_docker_container_image_tag }} mvn -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} dependency:list-repositories dependency:tree help:active-profiles clean install site site:stage
