@@ -96,3 +96,15 @@ jobs:
         CBD: /usr/src/build
         P: luminositylabs-oss
       run: docker container run --rm -i -v "$(pwd)":"${CBD}" -v ${HOME}/.gnupg:/root/.gnupg -v ${P}-${{ matrix.maven_docker_container_image_tag }}-mvn-repo:/root/.m2 -w "${CBD}" ${{ matrix.maven_docker_container_image_repo }}/${{ matrix.maven_docker_container_image_name }}:${{ matrix.maven_docker_container_image_tag }} mvn -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} dependency:list-repositories dependency:tree help:active-profiles clean install site site:stage
+
+    - name: Testing Module
+      run: >
+        mvn -U -V -f testing -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }}
+        dependency:list-repositories
+        dependency:tree
+        help:active-profiles
+        help:effective-pom
+        clean
+        install
+        site
+        site:stage
