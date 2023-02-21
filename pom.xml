@@ -115,7 +115,7 @@
         <dependency.pmd.version>6.54.0</dependency.pmd.version>
         <dependency.slf4j.version>2.0.6</dependency.slf4j.version>
         <dependency.spotbugs.version>4.7.3</dependency.spotbugs.version>
-        <dependency.testng.version>7.7.1</dependency.testng.version>
+        <dependency.testng.version>7.5</dependency.testng.version>
     </properties>
 
     <dependencyManagement>
