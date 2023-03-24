@@ -107,7 +107,7 @@
         <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
         <maven-surefire-report-plugin.version>3.0.0</maven-surefire-report-plugin.version>
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
-        <spotbugs-maven-plugin.version>4.7.3.2</spotbugs-maven-plugin.version>
+        <spotbugs-maven-plugin.version>4.7.3.3</spotbugs-maven-plugin.version>
         <versions-maven-plugin.version>2.15.0</versions-maven-plugin.version>
         <!-- Dependency versions -->
         <dependency.checkstyle.version>9.3</dependency.checkstyle.version>
