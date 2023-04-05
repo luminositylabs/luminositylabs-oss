@@ -24,5 +24,11 @@
                 <ignoreVersion type="regex">1\.4\..*</ignoreVersion>
             </ignoreVersions>
         </rule>
+        <!-- ignore release client version of pmd dependency -->
+        <rule groupId="net.sourceforge.pmd" comparisonMethod="maven">
+            <ignoreVersions>
+                <ignoreVersion type="regex">\d\.\d\.\d-rc\d</ignoreVersion>
+            </ignoreVersions>
+        </rule>
     </rules>
 </ruleset>
