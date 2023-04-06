@@ -5,5 +5,12 @@
     <ignoreVersions>
         <ignoreVersion type="regex">.*-[M|alpha|beta].*</ignoreVersion>
     </ignoreVersions>
-    <rules/>
+    <rules>
+        <!-- ignore release client version of pmd dependency -->
+        <rule groupId="net.sourceforge.pmd" comparisonMethod="maven">
+            <ignoreVersions>
+                <ignoreVersion type="regex">\d\.\d\.\d-rc\d</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+    </rules>
 </ruleset>
