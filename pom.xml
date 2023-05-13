@@ -73,7 +73,7 @@
         <pmd.skip>false</pmd.skip>
         <spotbugs.skip>false</spotbugs.skip>
         <!-- Plugin versioning -->
-        <build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
+        <build-helper-maven-plugin.version>3.4.0</build-helper-maven-plugin.version>
         <directory-maven-plugin.version>1.0</directory-maven-plugin.version>
         <download-maven-plugin.version>1.7.0</download-maven-plugin.version>
         <exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
@@ -110,7 +110,7 @@
         <spotbugs-maven-plugin.version>4.7.3.4</spotbugs-maven-plugin.version>
         <versions-maven-plugin.version>2.15.0</versions-maven-plugin.version>
         <!-- Dependency versions -->
-        <dependency.checkstyle.version>10.10.0</dependency.checkstyle.version>
+        <dependency.checkstyle.version>10.11.0</dependency.checkstyle.version>
         <dependency.logback.version>1.4.7</dependency.logback.version>
         <dependency.pmd.version>6.55.0</dependency.pmd.version>
         <dependency.slf4j.version>2.0.7</dependency.slf4j.version>
