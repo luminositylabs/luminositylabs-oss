@@ -8,6 +8,7 @@ import java.nio.file.FileVisitResult;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -69,7 +70,7 @@ public class FileWalker extends SimpleFileVisitor<Path> {
 
 
     /**
-     * Set the file file count.
+     * Set the file count.
      *
      * @param fileCount the file count.
      */
@@ -164,7 +165,7 @@ public class FileWalker extends SimpleFileVisitor<Path> {
      * @return the directory skip list
      */
     public List<String> getSkipDirectories() {
-        return skipDirectories;
+        return Collections.unmodifiableList(skipDirectories);
     }
 
 
@@ -174,7 +175,7 @@ public class FileWalker extends SimpleFileVisitor<Path> {
      * @param skipDirectories the directory skip list
      */
     public void setSkipDirectories(final List<String> skipDirectories) {
-        this.skipDirectories = skipDirectories;
+        this.skipDirectories = List.copyOf(skipDirectories);
     }
 
 
@@ -210,7 +211,7 @@ public class FileWalker extends SimpleFileVisitor<Path> {
         FileVisitResult fileVisitResult = FileVisitResult.CONTINUE;
         if (!isExcluded(path)) {
             fileCount++;
-            if ((fileCountCutoff != -1) && (fileCount > fileCountCutoff)) {
+            if (fileCountCutoff != -1 && fileCount > fileCountCutoff) {
                 fileVisitResult = FileVisitResult.TERMINATE;
             }
         }
@@ -228,7 +229,7 @@ public class FileWalker extends SimpleFileVisitor<Path> {
     public FileVisitResult visitFileFailed(final Path path,
                                            final IOException exc) throws IOException {
         errorCount++;
-        if ((errorCount % ERROR_COUNT_REPORTING_CHECKPOINT) == 0) {
+        if (errorCount % ERROR_COUNT_REPORTING_CHECKPOINT == 0) {
             logger.debug("currentErrorCount: {}", errorCount);
         }
         logger.error("Failed to visit path: {} ({}) ({})", path, exc.getClass().getName(), exc.getMessage());
