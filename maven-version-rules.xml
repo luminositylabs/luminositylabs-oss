@@ -6,6 +6,12 @@
         <ignoreVersion type="regex">.*-[M|alpha|beta].*</ignoreVersion>
     </ignoreVersions>
     <rules>
+        <!-- ignore maven-dependency-plugin v3.6.0 due to bug in list-repositories goal -->
+        <rule groupId="org.apache.maven.plugins" artifactId="maven-dependency-plugin" comparisonMethod="maven">
+            <ignoreVersions>
+                <ignoreVersion type="regex">3.6.0</ignoreVersion>
+            </ignoreVersions>
+        </rule>
         <!-- ignore release client version of pmd dependency -->
         <rule groupId="net.sourceforge.pmd" comparisonMethod="maven">
             <ignoreVersions>
