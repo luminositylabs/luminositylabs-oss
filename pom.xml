@@ -83,7 +83,7 @@
         <maven-archetype-plugin.version>3.2.1</maven-archetype-plugin.version>
         <maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
         <maven-checkstyle-plugin.version>3.3.0</maven-checkstyle-plugin.version>
-        <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
+        <maven-clean-plugin.version>3.3.1</maven-clean-plugin.version>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <maven-dependency-plugin.version>3.5.0</maven-dependency-plugin.version>
         <maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
@@ -107,10 +107,10 @@
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
         <maven-surefire-report-plugin.version>3.1.2</maven-surefire-report-plugin.version>
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
-        <spotbugs-maven-plugin.version>4.7.3.4</spotbugs-maven-plugin.version>
+        <spotbugs-maven-plugin.version>4.7.3.5</spotbugs-maven-plugin.version>
         <versions-maven-plugin.version>2.16.0</versions-maven-plugin.version>
         <!-- Dependency versions -->
-        <dependency.checkstyle.version>10.12.0</dependency.checkstyle.version>
+        <dependency.checkstyle.version>10.12.1</dependency.checkstyle.version>
         <dependency.logback.version>1.4.8</dependency.logback.version>
         <dependency.pmd.version>6.55.0</dependency.pmd.version>
         <dependency.slf4j.version>2.0.7</dependency.slf4j.version>
