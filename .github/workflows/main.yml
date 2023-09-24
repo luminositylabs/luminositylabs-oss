@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-22.04]
-        jdk_version: [11.0.20-zulu, 17.0.8-zulu, 20.0.2-zulu]
+        jdk_version: [11.0.20-zulu, 17.0.8-zulu, 21-zulu]
         maven_version: [3.9.4]
         include:
           - os: ubuntu-22.04
