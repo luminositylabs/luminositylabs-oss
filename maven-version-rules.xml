@@ -4,12 +4,5 @@
     <ignoreVersions>
         <ignoreVersion type="regex">.*[\.-](?i)([M|alpha|beta|rc]).*</ignoreVersion>
     </ignoreVersions>
-    <rules>
-        <!-- ignore maven-dependency-plugin v3.6.0 due to bug in list-repositories goal -->
-        <rule groupId="org.apache.maven.plugins" artifactId="maven-dependency-plugin" comparisonMethod="maven">
-            <ignoreVersions>
-                <ignoreVersion type="regex">3.6.0</ignoreVersion>
-            </ignoreVersions>
-        </rule>
-    </rules>
+    <rules/>
 </ruleset>
