@@ -32,7 +32,7 @@ jobs:
 
     steps:
     - name: Checkout Source
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Install GPG and generate test key
       run: .github/install-gpg.sh
@@ -53,7 +53,7 @@ jobs:
         echo "${MAVEN_HOME}/bin" >> $GITHUB_PATH
 
     - name: Setup Maven repository cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       env:
         cache-name: m2repo
       with:
