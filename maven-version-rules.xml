@@ -5,13 +5,6 @@
         <ignoreVersion type="regex">.*[\.-](?i)([M|alpha|beta|rc]).*</ignoreVersion>
     </ignoreVersions>
     <rules>
-        <!-- ignore maven-compiler-plugin v3.12.0 due to bug: https://issues.apache.org/jira/browse/MCOMPILER-567 -->
-        <rule groupId="org.apache.maven.plugins" artifactId="maven-compiler-plugin" comparisonMethod="maven">
-            <ignoreVersions>
-                <ignoreVersion type="regex">3.12.0</ignoreVersion>
-            </ignoreVersions>
-        </rule>
-
         <!-- Pin checkstyle version to pre-v10 (v10 is requires Java11) -->
         <rule groupId="com.puppycrawl.tools" artifactId="checkstyle" comparisonMethod="maven">
             <ignoreVersions>
@@ -27,7 +20,7 @@
         <!-- Pin logback version to v1.3.x (v1.4.0+ requires Java11) -->
         <rule groupId="ch.qos.logback" comparisonMethod="maven">
             <ignoreVersions>
-                <ignoreVersion type="regex">1\.4\..*</ignoreVersion>
+                <ignoreVersion type="regex">1\.[4-9]\..*</ignoreVersion>
             </ignoreVersions>
         </rule>
         <!-- ignore maven-dependency-plugin v3.6.0 due to bug in list-repositories goal -->
