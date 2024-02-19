@@ -1,16 +1,9 @@
 <ruleset comparisonMethod="maven"
-         xmlns="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0 https://www.mojohaus.org/versions-maven-plugin/xsd/rule-2.0.0.xsd">
+         xmlns="https://www.mojohaus.org/VERSIONS/RULE/2.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://www.mojohaus.org/VERSIONS/RULE/2.1.0 https://www.mojohaus.org/versions/versions-model/xsd/rule-2.1.0.xsd">
     <ignoreVersions>
-        <ignoreVersion type="regex">.*-[M|alpha|beta].*</ignoreVersion>
+        <ignoreVersion type="regex">.*[\.-](?i)([M|alpha|beta|rc]).*</ignoreVersion>
     </ignoreVersions>
     <rules>
-        <!-- ignore release client version of pmd dependency -->
-        <rule groupId="net.sourceforge.pmd" comparisonMethod="maven">
-            <ignoreVersions>
-                <ignoreVersion type="regex">\d\.\d\.\d-rc\d</ignoreVersion>
-            </ignoreVersions>
-        </rule>
     </rules>
 </ruleset>
