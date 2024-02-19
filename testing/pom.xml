@@ -12,7 +12,7 @@
     <artifactId>testing</artifactId>
     <packaging>pom</packaging>
 
-    <name>testing</name>
+    <name>Luminosity Labs Open Source Software - Testing</name>
     <description>Test code aggregator module</description>
 
     <modules>
