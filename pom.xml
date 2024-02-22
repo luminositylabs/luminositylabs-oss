@@ -77,7 +77,7 @@
         <directory-maven-plugin.version>1.0</directory-maven-plugin.version>
         <directory-maven-plugin-hazendaz.version>1.1.1</directory-maven-plugin-hazendaz.version>
         <download-maven-plugin.version>1.8.1</download-maven-plugin.version>
-        <exec-maven-plugin.version>3.1.1</exec-maven-plugin.version>
+        <exec-maven-plugin.version>3.2.0</exec-maven-plugin.version>
         <git-commit-id-maven-plugin.version>7.0.0</git-commit-id-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
         <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
