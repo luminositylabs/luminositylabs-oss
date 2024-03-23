@@ -113,7 +113,7 @@
         <!-- Dependency versions -->
         <dependency.checkstyle.version>9.3</dependency.checkstyle.version>
         <dependency.logback.version>1.3.14</dependency.logback.version>
-        <dependency.pmd.version>6.55.0</dependency.pmd.version>
+        <dependency.pmd.version>7.0.0</dependency.pmd.version>
         <dependency.slf4j.version>2.0.12</dependency.slf4j.version>
         <dependency.spotbugs.version>4.8.3</dependency.spotbugs.version>
         <dependency.testng.version>7.5.1</dependency.testng.version>
@@ -426,6 +426,11 @@
                     <artifactId>maven-pmd-plugin</artifactId>
                     <version>${maven-pmd-plugin.version}</version>
                     <dependencies>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-compat6</artifactId>
+                            <version>${dependency.pmd.version}</version>
+                        </dependency>
                         <dependency>
                             <groupId>net.sourceforge.pmd</groupId>
                             <artifactId>pmd-core</artifactId>
