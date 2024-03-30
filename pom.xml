@@ -146,6 +146,12 @@
                 <artifactId>slf4j-simple</artifactId>
                 <version>${dependency.slf4j.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${dependency.testng.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -167,7 +173,6 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
-            <version>${dependency.logback.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.spotbugs</groupId>
@@ -180,7 +185,6 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>${dependency.testng.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -571,9 +575,9 @@
                     </configuration>
                 </plugin>
                 <plugin>
-                    <groupId>org.commonjava.maven.plugins</groupId>
+                    <groupId>com.github.hazendaz.maven</groupId>
                     <artifactId>directory-maven-plugin</artifactId>
-                    <version>${directory-maven-plugin.version}</version>
+                    <version>${directory-maven-plugin-hazendaz.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.jacoco</groupId>
