@@ -575,11 +575,6 @@
                     </configuration>
                 </plugin>
                 <plugin>
-                    <groupId>com.github.hazendaz.maven</groupId>
-                    <artifactId>directory-maven-plugin</artifactId>
-                    <version>${directory-maven-plugin-hazendaz.version}</version>
-                </plugin>
-                <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
                     <version>${jacoco-maven-plugin.version}</version>
