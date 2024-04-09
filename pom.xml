@@ -115,8 +115,8 @@
         <dependency.logback.version>1.5.3</dependency.logback.version>
         <dependency.pmd.version>7.0.0</dependency.pmd.version>
         <dependency.slf4j.version>2.0.12</dependency.slf4j.version>
-        <dependency.spotbugs.version>4.8.3</dependency.spotbugs.version>
-        <dependency.testng.version>7.9.0</dependency.testng.version>
+        <dependency.spotbugs.version>4.8.4</dependency.spotbugs.version>
+        <dependency.testng.version>7.10.0</dependency.testng.version>
     </properties>
 
     <dependencyManagement>
