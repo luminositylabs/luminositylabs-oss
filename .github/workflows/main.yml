@@ -84,7 +84,7 @@ jobs:
       run: mvn -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} site site:stage
 
     - name: Maven deploy
-      if: ${{ matrix.maven_deploy && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/jdk8') && (github.event_name != 'pull_request')  }}
+      if: ${{ matrix.maven_deploy && github.ref == 'refs/heads/jdk8' && (github.event_name != 'pull_request')  }}
       env:
         OSSRHU: ${{ secrets.OSSRHU }}
         OSSRHT: ${{ secrets.OSSRHT }}
