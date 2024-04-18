@@ -94,7 +94,7 @@
         <maven-failsafe-plugin.version>3.2.5</maven-failsafe-plugin.version>
         <maven-gpg-plugin.version>3.2.3</maven-gpg-plugin.version>
         <maven-install-plugin.version>3.1.1</maven-install-plugin.version>
-        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
+        <maven-jar-plugin.version>3.4.0</maven-jar-plugin.version>
         <maven-jarsigner-plugin.version>3.0.0</maven-jarsigner-plugin.version>
         <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
         <maven-jxr-plugin.version>3.3.2</maven-jxr-plugin.version>
@@ -112,7 +112,7 @@
         <versions-maven-plugin.version>2.16.2</versions-maven-plugin.version>
         <!-- Dependency versions -->
         <dependency.checkstyle.version>10.15.0</dependency.checkstyle.version>
-        <dependency.logback.version>1.5.5</dependency.logback.version>
+        <dependency.logback.version>1.5.6</dependency.logback.version>
         <dependency.pmd.version>7.0.0</dependency.pmd.version>
         <dependency.slf4j.version>2.0.13</dependency.slf4j.version>
         <dependency.spotbugs.version>4.8.4</dependency.spotbugs.version>
