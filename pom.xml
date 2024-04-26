@@ -710,12 +710,16 @@
                     <reportSet>
                         <id>version-update-reports</id>
                         <reports>
+                            <report>display-parent-updates</report>
                             <report>dependency-updates-report</report>
                             <report>plugin-updates-report</report>
                             <report>property-updates-report</report>
                         </reports>
                     </reportSet>
                 </reportSets>
+                <configuration>
+                    <rulesUri>file:///${project.basedir}/maven-version-rules.xml</rulesUri>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
