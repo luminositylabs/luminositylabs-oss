@@ -678,9 +678,6 @@
                         <id>pmd</id>
                         <configuration>
                             <skip>false</skip>
-                            <rulesets>
-                                <ruleset>pmd.xml</ruleset>
-                            </rulesets>
                         </configuration>
                         <reports>
                             <report>pmd</report>
@@ -688,6 +685,11 @@
                         </reports>
                     </reportSet>
                 </reportSets>
+                <configuration>
+                    <rulesets>
+                        <ruleset>pmd.xml</ruleset>
+                    </rulesets>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
