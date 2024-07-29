@@ -10,19 +10,19 @@ jobs:
   build-codebase:
     strategy:
       matrix:
-        os: [ubuntu-22.04]
-        jdk_version: [11.0.23-zulu, 17.0.11-zulu, 21.0.3-zulu]
-        maven_version: [3.9.6]
+        os: [ubuntu-24.04]
+        jdk_version: [11.0.24-zulu]
+        maven_version: [3.9.8]
         include:
-          - os: ubuntu-22.04
-            jdk_version: 11.0.23-zulu
-            zulu_version: 11.72.19
-            maven_version: 3.9.6
+          - os: ubuntu-24.04
+            jdk_version: 11.0.24-zulu
+            zulu_version: 11.74.15
+            maven_version: 3.9.8
             maven_deploy: true
             docker_build: true
             maven_docker_container_image_repo: luminositylabs
             maven_docker_container_image_name: maven
-            maven_docker_container_image_tag: 3.9.6_openjdk-11.0.23_zulu-alpine-11.72.19
+            maven_docker_container_image_tag: 3.9.8_openjdk-11.0.24_zulu-alpine-11.74.15
     name: Build on OS ${{ matrix.os }} with Maven ${{ matrix.maven_version }} using JDK ${{ matrix.jdk_version }}
     runs-on: ${{ matrix.os }}
     env:

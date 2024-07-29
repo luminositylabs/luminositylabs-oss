@@ -33,14 +33,6 @@
                     </configuration>
                 </plugin>
                 <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>versions-maven-plugin</artifactId>
-                    <configuration>
-                        <!--suppress UnresolvedMavenProperty -->
-                        <rulesUri>file:///${multi.module.root}/maven-version-rules.xml</rulesUri>
-                    </configuration>
-                </plugin>
-                <plugin>
                     <groupId>com.github.hazendaz.maven</groupId>
                     <artifactId>directory-maven-plugin</artifactId>
                     <executions>
@@ -85,6 +77,29 @@
         </plugins>
     </build>
 
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <configuration>
+                    <rulesets>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <ruleset>file:///${multi.module.root}/pmd.xml</ruleset>
+                    </rulesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <configuration>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <rulesUri>file:///${multi.module.root}/maven-version-rules.xml</rulesUri>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
     <profiles>
         <profile>
             <id>check-versions</id>
@@ -97,17 +112,18 @@
                             <execution>
                                 <id>check-versions</id>
                                 <goals>
+                                    <goal>display-parent-updates</goal>
                                     <goal>display-plugin-updates</goal>
                                     <goal>display-dependency-updates</goal>
                                     <goal>display-property-updates</goal>
                                 </goals>
                                 <phase>validate</phase>
-                                <configuration>
-                                    <!--suppress UnresolvedMavenProperty -->
-                                    <rulesUri>file:///${multi.module.root}/maven-version-rules.xml</rulesUri>
-                                </configuration>
                             </execution>
                         </executions>
+                        <configuration>
+                            <!--suppress UnresolvedMavenProperty -->
+                            <rulesUri>file:///${multi.module.root}/maven-version-rules.xml</rulesUri>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
