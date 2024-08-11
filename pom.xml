@@ -114,7 +114,7 @@
         <dependency.checkstyle.version>9.3</dependency.checkstyle.version>
         <dependency.logback.version>1.3.14</dependency.logback.version>
         <dependency.pmd.version>7.4.0</dependency.pmd.version>
-        <dependency.slf4j.version>2.0.15</dependency.slf4j.version>
+        <dependency.slf4j.version>2.0.16</dependency.slf4j.version>
         <dependency.spotbugs.version>4.8.6</dependency.spotbugs.version>
         <dependency.testng.version>7.5.1</dependency.testng.version>
     </properties>
