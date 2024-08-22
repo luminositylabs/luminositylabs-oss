@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -54,7 +55,20 @@ public class FileWalkTest {
         Path exclusionsListPath = Paths.get(
                 directoryScanExclusionsListURL.toURI()
         );
-        List<String> exclusionsList = Files.readAllLines(exclusionsListPath);
+        List<String> exclusionsList = Files.readAllLines(exclusionsListPath)
+                .stream()
+                .map(s -> {
+                    String replacementString = s;
+                    for (String propertyName : System.getProperties().stringPropertyNames()) {
+                        String propertyValue = System.getProperty(propertyName);
+                        String replacementExpression = "${" + propertyName + "}";
+                        if (replacementString.contains(replacementExpression)) {
+                            replacementString = replacementString.replace(replacementExpression, propertyValue);
+                        }
+                    }
+                    return replacementString;
+                })
+                .collect(Collectors.toList());
 
         URL directoryScanInclusionsListURL = Thread.currentThread()
                 .getContextClassLoader()
@@ -63,7 +77,20 @@ public class FileWalkTest {
         Path inclusionsListPath = Paths.get(
                 directoryScanInclusionsListURL.toURI()
         );
-        List<String> inclusionsList = Files.readAllLines(inclusionsListPath);
+        List<String> inclusionsList = Files.readAllLines(inclusionsListPath)
+                .stream()
+                .map(s -> {
+                    String replacementString = s;
+                    for (String propertyName : System.getProperties().stringPropertyNames()) {
+                        String propertyValue = System.getProperty(propertyName);
+                        String replacementExpression = "${" + propertyName + "}";
+                        if (replacementString.contains(replacementExpression)) {
+                            replacementString = replacementString.replace(replacementExpression, propertyValue);
+                        }
+                    }
+                    return replacementString;
+                })
+                .collect(Collectors.toList());
 
         EnumSet<FileVisitOption> options = EnumSet.noneOf(FileVisitOption.class);
         int maxDepth = Integer.MAX_VALUE;
@@ -93,7 +120,7 @@ public class FileWalkTest {
                 totalDirectoryCount += fileIndexer.getDirectoryCount();
                 totalErrors += fileIndexer.getErrorCount();
             } else {
-                logger.error("Skipping {} (non-existant?)", inclusion);
+                logger.error("Skipping {} (non-existent?)", inclusion);
             }
         }
 
