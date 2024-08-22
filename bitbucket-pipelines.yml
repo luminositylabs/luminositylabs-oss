@@ -1,7 +1,7 @@
 pipelines:
     default:
         - step:
-            image: luminositylabs/maven:3.9.8_openjdk-11.0.24_zulu-alpine-11.74.15
+            image: luminositylabs/maven:3.9.9_openjdk-11.0.24_zulu-alpine-11.74.15
             script:
                 - mvn -U -V -s .bitbucket-pipelines/settings.xml -Psonatype-snapshots,sonatype-staging,sonatype-releases dependency:list-repositories
                 - mvn -U -V -s .bitbucket-pipelines/settings.xml -Psonatype-snapshots,sonatype-staging,sonatype-releases dependency:tree
