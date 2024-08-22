@@ -2,3 +2,4 @@
 /net
 /proc
 /sys
+${user.home}/Library
