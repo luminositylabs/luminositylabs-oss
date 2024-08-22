@@ -8,6 +8,7 @@ import java.nio.file.FileVisitResult;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -175,7 +176,7 @@ public class FileWalker extends SimpleFileVisitor<Path> {
      * @param skipDirectories the directory skip list
      */
     public void setSkipDirectories(final List<String> skipDirectories) {
-        this.skipDirectories = List.copyOf(skipDirectories);
+        this.skipDirectories = new ArrayList<>(skipDirectories);
     }
 
 
