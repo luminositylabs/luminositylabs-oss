@@ -1,9 +1,9 @@
 pipelines:
     default:
         - step:
-            image: luminositylabs/maven:3.9.9_openjdk-21.0.5_zulu-alpine-21.38.21
+            image: luminositylabs/openjdk:21.0.5_zulu-alpine-21.38.21
             script:
-                - mvn -U -V -s .bitbucket-pipelines/settings.xml -Psonatype-snapshots,sonatype-staging,sonatype-releases dependency:list-repositories
-                - mvn -U -V -s .bitbucket-pipelines/settings.xml -Psonatype-snapshots,sonatype-staging,sonatype-releases dependency:tree
-                - mvn -U -V -s .bitbucket-pipelines/settings.xml -Psonatype-snapshots,sonatype-staging,sonatype-releases help:active-profiles clean install
-                - mvn -U -V -s .bitbucket-pipelines/settings.xml -Psonatype-snapshots,sonatype-staging,sonatype-releases site site:stage
+                - ./mvnw -U -V -s .bitbucket-pipelines/settings.xml -Psonatype-snapshots,sonatype-staging,sonatype-releases dependency:list-repositories
+                - ./mvnw -U -V -s .bitbucket-pipelines/settings.xml -Psonatype-snapshots,sonatype-staging,sonatype-releases dependency:tree
+                - ./mvnw -U -V -s .bitbucket-pipelines/settings.xml -Psonatype-snapshots,sonatype-staging,sonatype-releases help:active-profiles clean install
+                - ./mvnw -U -V -s .bitbucket-pipelines/settings.xml -Psonatype-snapshots,sonatype-staging,sonatype-releases site site:stage
