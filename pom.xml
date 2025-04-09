@@ -79,7 +79,7 @@
         <download-maven-plugin.version>1.13.0</download-maven-plugin.version>
         <exec-maven-plugin.version>3.5.0</exec-maven-plugin.version>
         <git-commit-id-maven-plugin.version>9.0.1</git-commit-id-maven-plugin.version>
-        <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
         <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
         <maven-archetype-plugin.version>3.3.1</maven-archetype-plugin.version>
         <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
