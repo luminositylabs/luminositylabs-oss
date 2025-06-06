@@ -73,7 +73,7 @@
         <pmd.skip>false</pmd.skip>
         <spotbugs.skip>false</spotbugs.skip>
         <!-- Plugin versioning -->
-        <build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
+        <build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
         <directory-maven-plugin.version>1.0</directory-maven-plugin.version>
         <directory-maven-plugin-hazendaz.version>1.2.1</directory-maven-plugin-hazendaz.version>
         <download-maven-plugin.version>1.13.0</download-maven-plugin.version>
