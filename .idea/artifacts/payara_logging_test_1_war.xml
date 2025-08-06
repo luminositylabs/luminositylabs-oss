@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="payara-logging-test-1:war">
-    <output-path>$PROJECT_DIR$/testing/payara-logging-test-1/target</output-path>
-    <root id="archive" name="payara-logging-test-1-0.0.1-SNAPSHOT.war">
-      <element id="artifact" artifact-name="payara-logging-test-1:war exploded" />
-    </root>
-  </artifact>
-</component>
