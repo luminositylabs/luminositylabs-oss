@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/distributions/distributions.iml" filepath="$PROJECT_DIR$/distributions/distributions.iml" group="distributions and modules" />
-      <module fileurl="file://$PROJECT_DIR$/distributions/payara-full/payara-full.iml" filepath="$PROJECT_DIR$/distributions/payara-full/payara-full.iml" group="distributions and modules" />
-    </modules>
-  </component>
-</project>
