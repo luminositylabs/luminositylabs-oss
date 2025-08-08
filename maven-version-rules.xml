@@ -5,5 +5,11 @@
         <ignoreVersion type="regex">.*[\.-](?i)([M|alpha|beta|rc]).*</ignoreVersion>
     </ignoreVersions>
     <rules>
+        <!-- Pin checkstyle version to pre-v11 (v11 requires Java17) -->
+        <rule groupId="com.puppycrawl.tools" artifactId="checkstyle" comparisonMethod="maven">
+            <ignoreVersions>
+                <ignoreVersion type="regex">11\..*</ignoreVersion>
+            </ignoreVersions>
+        </rule>
     </rules>
 </ruleset>
