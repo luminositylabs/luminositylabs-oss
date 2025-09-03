@@ -8,7 +8,7 @@
         <!-- Pin checkstyle version to pre-v10 (v10 requires Java11) -->
         <rule groupId="com.puppycrawl.tools" artifactId="checkstyle" comparisonMethod="maven">
             <ignoreVersions>
-                <ignoreVersion type="regex">10\..*</ignoreVersion>
+                <ignoreVersion type="regex">[1-9]\d+\..*</ignoreVersion>
             </ignoreVersions>
         </rule>
         <!-- Pin spotbugs version to pre-v4.9.0 (v4.9.0 requires Java11) -->
