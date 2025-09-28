@@ -58,7 +58,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.min.version>21</java.min.version>
+        <java.min.version>25</java.min.version>
         <maven.min.version>3.9</maven.min.version>
         <maven.test.skip>false</maven.test.skip>
         <maven.integration.test.skip>false</maven.integration.test.skip>
