@@ -80,7 +80,7 @@ jobs:
       run: ./mvnw -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} site site:stage
 
     - name: Maven deploy
-      if: ${{ matrix.maven_deploy && (github.ref == 'refs/heads/main') && (github.event_name != 'pull_request')  }}
+      if: ${{ matrix.maven_deploy && (github.ref == 'refs/heads/jdk21') && (github.event_name != 'pull_request')  }}
       env:
         SONATYPE_CENTRAL_PORTAL_REPO_USERNAME: ${{ secrets.SONATYPE_CENTRAL_PORTAL_REPO_USERNAME }}
         SONATYPE_CENTRAL_PORTAL_REPO_PASSWORD: ${{ secrets.SONATYPE_CENTRAL_PORTAL_REPO_PASSWORD }}
