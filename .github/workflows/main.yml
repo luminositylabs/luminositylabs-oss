@@ -11,16 +11,16 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-24.04]
-        jdk_version: [11.0.29-zulu, 17.0.17-zulu, 21.0.9-zulu, 25.0.1-zulu]
+        jdk_version: [11.0.30-zulu, 17.0.18-zulu, 21.0.9-zulu, 25.02-zulu]
         include:
           - os: ubuntu-24.04
-            jdk_version: 11.0.28-zulu
-            zulu_version: 11.84.17
+            jdk_version: 11.0.30-zulu
+            zulu_version: 11.86.19
             maven_deploy: true
             docker_build: true
             maven_docker_container_image_repo: luminositylabs
             maven_docker_container_image_name: openjdk
-            maven_docker_container_image_tag: 11.0.29_zulu-alpine-11.84.17
+            maven_docker_container_image_tag: 11.0.30_zulu-alpine-11.86.19
     name: Build on OS ${{ matrix.os }} using JDK ${{ matrix.jdk_version }}
     runs-on: ${{ matrix.os }}
     env:
@@ -30,7 +30,7 @@ jobs:
 
     steps:
     - name: Checkout Source
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Install GPG and generate test key
       run: .github/install-gpg.sh
@@ -49,7 +49,7 @@ jobs:
         echo "${JAVA_HOME}/bin" >> $GITHUB_PATH
 
     - name: Setup Maven repository cache
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       env:
         cache-name: m2repo
       with:
