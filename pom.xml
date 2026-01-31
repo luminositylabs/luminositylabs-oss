@@ -111,14 +111,14 @@
         <maven-war-plugin.version>3.5.1</maven-war-plugin.version>
         <maven-wrapper-plugin.version>3.3.4</maven-wrapper-plugin.version>
         <spotbugs-maven-plugin.version>4.9.8.2</spotbugs-maven-plugin.version>
-        <versions-maven-plugin.version>2.20.1</versions-maven-plugin.version>
+        <versions-maven-plugin.version>2.21.0</versions-maven-plugin.version>
         <!-- Dependency versions -->
         <dependency.checkstyle.version>10.26.1</dependency.checkstyle.version>
-        <dependency.logback.version>1.5.25</dependency.logback.version>
-        <dependency.pmd.version>7.20.0</dependency.pmd.version>
+        <dependency.logback.version>1.5.27</dependency.logback.version>
+        <dependency.pmd.version>7.21.0</dependency.pmd.version>
         <dependency.slf4j.version>2.0.17</dependency.slf4j.version>
         <dependency.spotbugs.version>4.9.8</dependency.spotbugs.version>
-        <dependency.testng.version>7.11.0</dependency.testng.version>
+        <dependency.testng.version>7.12.0</dependency.testng.version>
     </properties>
 
     <dependencyManagement>
