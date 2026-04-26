@@ -11,16 +11,16 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-24.04]
-        jdk_version: [11.0.30-zulu, 17.0.18-zulu, 21.0.10-zulu, 25.0.2-zulu]
+        jdk_version: [11.0.31-zulu, 17.0.19-zulu, 21.0.11-zulu, 25.0.3-zulu]
         include:
           - os: ubuntu-24.04
-            jdk_version: 11.0.30-zulu
-            zulu_version: 11.86.21
+            jdk_version: 11.0.31-zulu
+            zulu_version: 11.88.17
             maven_deploy: true
             docker_build: true
             maven_docker_container_image_repo: luminositylabs
             maven_docker_container_image_name: openjdk
-            maven_docker_container_image_tag: 11.0.30_zulu-alpine-11.86.21
+            maven_docker_container_image_tag: 11.0.31_zulu-alpine-11.88.17
     name: Build on OS ${{ matrix.os }} using JDK ${{ matrix.jdk_version }}
     runs-on: ${{ matrix.os }}
     env:
