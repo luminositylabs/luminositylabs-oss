@@ -114,7 +114,7 @@
         <versions-maven-plugin.version>2.21.0</versions-maven-plugin.version>
         <!-- Dependency versions -->
         <dependency.checkstyle.version>10.26.1</dependency.checkstyle.version>
-        <dependency.logback.version>1.5.37</dependency.logback.version>
+        <dependency.logback.version>1.5.38</dependency.logback.version>
         <dependency.pmd.version>7.26.0</dependency.pmd.version>
         <dependency.slf4j.version>2.0.18</dependency.slf4j.version>
         <dependency.spotbugs.version>4.10.2</dependency.spotbugs.version>
