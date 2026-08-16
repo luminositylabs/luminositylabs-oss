@@ -13,7 +13,7 @@ jobs:
         os: [ubuntu-26.04]
         jdk_version: [21.0.12-zulu,25.0.4-zulu]
         include:
-          - os: ubuntu-24.04
+          - os: ubuntu-26.04
             jdk_version: 21.0.12-zulu
             zulu_version: 21.52.15
             maven_deploy: true
