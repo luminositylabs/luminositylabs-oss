@@ -102,5 +102,5 @@ jobs:
         help:effective-pom
         clean
         install
-        site
-        site:stage
+#        site
+#        site:stage
