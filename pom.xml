@@ -116,7 +116,7 @@
         <!-- Dependency versions -->
         <dependency.checkstyle.version>10.26.1</dependency.checkstyle.version>
         <dependency.logback.version>1.6.3</dependency.logback.version>
-        <dependency.pmd.version>7.26.0</dependency.pmd.version>
+        <dependency.pmd.version>7.27.0</dependency.pmd.version>
         <dependency.slf4j.version>2.0.18</dependency.slf4j.version>
         <dependency.spotbugs.version>4.10.4</dependency.spotbugs.version>
         <dependency.testng.version>7.12.0</dependency.testng.version>
