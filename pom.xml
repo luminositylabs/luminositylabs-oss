@@ -390,9 +390,6 @@
                     <configuration>
                         <forkCount>${failsafe.forkCount}</forkCount>
                         <skip>${maven.integration.test.skip}</skip>
-                        <!--<suiteXmlFiles>
-                            <suiteXmlFile>${project.build.testOutputDirectory}/testng-it.xml</suiteXmlFile>
-                        </suiteXmlFiles>-->
                         <useSystemClassLoader>${failsafe.useSystemClassLoader}</useSystemClassLoader>
                     </configuration>
                 </plugin>
@@ -530,9 +527,6 @@
                     <configuration>
                         <forkCount>${surefire.forkCount}</forkCount>
                         <skip>${maven.test.skip}</skip>
-                        <!--<suiteXmlFiles>
-                            <suiteXmlFile>${project.build.testOutputDirectory}/testng.xml</suiteXmlFile>
-                        </suiteXmlFiles>-->
                         <useSystemClassLoader>${surefire.useSystemClassLoader}</useSystemClassLoader>
                     </configuration>
                 </plugin>
