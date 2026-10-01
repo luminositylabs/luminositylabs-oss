@@ -11,16 +11,16 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-26.04]
-        jdk_version: [25.0.4+1.1-zulu]
+        jdk_version: [27.0.0+35-zulu]
         include:
           - os: ubuntu-26.04
-            jdk_version: 25.0.4+1.1-zulu
-            zulu_version: 25.36.205
+            jdk_version: 27.0.0+35-zulu
+            zulu_version: 27.28.101
             maven_deploy: true
             docker_build: true
             maven_docker_container_image_repo: luminositylabs
             maven_docker_container_image_name: openjdk
-            maven_docker_container_image_tag: 25.0.4.1_zulu-alpine-25.36.205
+            maven_docker_container_image_tag: 27_zulu-alpine-27.28.101
     name: Build on OS ${{ matrix.os }} using JDK ${{ matrix.jdk_version }}
     runs-on: ${{ matrix.os }}
     env:
@@ -80,7 +80,7 @@ jobs:
       run: ./mvnw -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} site site:stage
 
     - name: Maven deploy
-      if: ${{ matrix.maven_deploy && (github.ref == 'refs/heads/main') && (github.event_name != 'pull_request')  }}
+      if: ${{ matrix.maven_deploy && (github.ref == 'refs/heads/jdk27') && (github.event_name != 'pull_request')  }}
       env:
         SONATYPE_CENTRAL_PORTAL_REPO_USERNAME: ${{ secrets.SONATYPE_CENTRAL_PORTAL_REPO_USERNAME }}
         SONATYPE_CENTRAL_PORTAL_REPO_PASSWORD: ${{ secrets.SONATYPE_CENTRAL_PORTAL_REPO_PASSWORD }}
