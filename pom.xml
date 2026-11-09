@@ -831,6 +831,34 @@
             </build>
         </profile>
         <profile>
+            <!--
+            This profile configures the sign goal of the maven-gpg-plugin to use Bouncy Castle signer. The BC signer
+            is a pure Java implementation of GPG which uses env vars to specify keys and passphrase rather than a local
+            GPG installation and keyring. The default env vars MAVEN_GPG_KEY and MAVEN_GPG_PASSPHRASE must be set and
+            contain the GPG secret key and passphrase to be used for signing artifacts. -->
+            <id>bc-signer</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <signer>bc</signer>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
             <id>sonatype-central-portal-deployment</id>
             <build>
                 <plugins>
