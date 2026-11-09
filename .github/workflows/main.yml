@@ -73,6 +73,11 @@ jobs:
     - name: Show Maven effective POM
       run: ./mvnw -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} help:effective-pom
 
+    - name: Skip artifact signing for PRs
+      if: ${{ github.event_name == 'pull_request' }}
+      run: |
+        echo "MAVEN_PROPS=${MAVEN_PROPS:+-Dgpg.skip=true }" >> $GITHUB_ENV
+
     - name: Maven build/test
       env:
         MAVEN_GPG_KEY: ${{ secrets.MAVEN_GPG_KEY }}
