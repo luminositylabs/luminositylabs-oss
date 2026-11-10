@@ -11,16 +11,16 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-26.04]
-        jdk_version: [8.0.512.0+8-zulu, 11.0.33.0+9-zulu, 17.0.21.0+9-zulu, 21.0.12+1.1-zulu, 25.0.4+1.1-zulu]
+        jdk_version: [8.0.512.0+9-zulu, 11.0.33.0+9-zulu, 17.0.21.0+9-zulu, 21.0.12+1.1-zulu, 25.0.4+1.1-zulu]
         include:
           - os: ubuntu-26.04
-            jdk_version: 8.0.512.0+8-zulu
-            zulu_version: 8.98.0.107
+            jdk_version: 8.0.512.0+9-zulu
+            zulu_version: 8.98.0.111
             maven_deploy: true
             docker_build: true
             maven_docker_container_image_repo: luminositylabs
             maven_docker_container_image_name: openjdk
-            maven_docker_container_image_tag: 8u512_zulu-alpine-8.98.0.107
+            maven_docker_container_image_tag: 8u512_zulu-alpine-8.98.0.111
     name: Build on OS ${{ matrix.os }} using JDK ${{ matrix.jdk_version }}
     runs-on: ${{ matrix.os }}
     env:
@@ -76,7 +76,7 @@ jobs:
     - name: Skip artifact signing for PRs
       if: ${{ github.event_name == 'pull_request' }}
       run: |
-        echo "MAVEN_PROPS=${MAVEN_PROPS:+-Dgpg.skip=true }" >> $GITHUB_ENV
+        echo "MAVEN_PROPS=${MAVEN_PROPS} -Dgpg.skip=true" >> $GITHUB_ENV
 
     - name: Maven build/test
       env:
