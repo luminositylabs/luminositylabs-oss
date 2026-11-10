@@ -30,7 +30,7 @@ jobs:
 
     steps:
     - name: Checkout Source
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: Install SDKMAN and java environment
       run: |
@@ -46,7 +46,7 @@ jobs:
         echo "${JAVA_HOME}/bin" >> $GITHUB_PATH
 
     - name: Setup Maven repository cache
-      uses: actions/cache@v5
+      uses: actions/cache@v6
       env:
         cache-name: m2repo
       with:
