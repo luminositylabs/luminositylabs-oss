@@ -32,9 +32,6 @@ jobs:
     - name: Checkout Source
       uses: actions/checkout@v6
 
-    - name: Install GPG and generate test key
-      run: .github/install-gpg.sh
-
     - name: Install SDKMAN and java environment
       run: |
         .github/install-sdkman.sh ${{ matrix.jdk_version }}
