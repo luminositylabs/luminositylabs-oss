@@ -11,21 +11,21 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-26.04]
-        jdk_version: [8.0.512.0+8-zulu, 11.0.33.0+9-zulu, 17.0.21.0+9-zulu, 21.0.12+1.1-zulu, 25.0.4+1.1-zulu]
+        jdk_version: [8.0.512.0+9-zulu, 11.0.33.0+9-zulu, 17.0.21.0+9-zulu, 21.0.12+1.1-zulu, 25.0.4+1.1-zulu]
         include:
           - os: ubuntu-26.04
-            jdk_version: 8.0.512.0+8-zulu
-            zulu_version: 8.98.0.107
+            jdk_version: 8.0.512.0+9-zulu
+            zulu_version: 8.98.0.111
             maven_deploy: true
             docker_build: true
             maven_docker_container_image_repo: luminositylabs
             maven_docker_container_image_name: openjdk
-            maven_docker_container_image_tag: 8u512_zulu-alpine-8.98.0.107
+            maven_docker_container_image_tag: 8u512_zulu-alpine-8.98.0.111
     name: Build on OS ${{ matrix.os }} using JDK ${{ matrix.jdk_version }}
     runs-on: ${{ matrix.os }}
     env:
       MAVEN_PROPS: -Djavadoc.path=`which javadoc`
-      PROFILES: gpg,release-sign-artifacts,sonatype-central-portal-deployment,sonatype-central-snapshots
+      PROFILES: bc-signer,release-sign-artifacts,sonatype-central-portal-deployment,sonatype-central-snapshots
       SETTINGS: .github/settings.xml
 
     steps:
@@ -73,7 +73,15 @@ jobs:
     - name: Show Maven effective POM
       run: ./mvnw -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} help:effective-pom
 
+    - name: Skip artifact signing for PRs
+      if: ${{ github.event_name == 'pull_request' }}
+      run: |
+        echo "MAVEN_PROPS=${MAVEN_PROPS} -Dgpg.skip=true" >> $GITHUB_ENV
+
     - name: Maven build/test
+      env:
+        MAVEN_GPG_KEY: ${{ secrets.MAVEN_GPG_KEY }}
+        MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
       run: ./mvnw -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} clean install
 
     - name: Maven generate site
@@ -84,6 +92,8 @@ jobs:
       env:
         SONATYPE_CENTRAL_PORTAL_REPO_USERNAME: ${{ secrets.SONATYPE_CENTRAL_PORTAL_REPO_USERNAME }}
         SONATYPE_CENTRAL_PORTAL_REPO_PASSWORD: ${{ secrets.SONATYPE_CENTRAL_PORTAL_REPO_PASSWORD }}
+        MAVEN_GPG_KEY: ${{ secrets.MAVEN_GPG_KEY }}
+        MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
       run: ./mvnw -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} deploy
 
     - name: Docker maven build
@@ -91,9 +101,12 @@ jobs:
       env:
         CBD: /usr/src/build
         P: luminositylabs-oss
-      run: docker container run --rm -i -v "$(pwd)":"${CBD}" -v ${HOME}/.gnupg:/root/.gnupg -v ${P}-${{ matrix.maven_docker_container_image_tag }}-mvn-repo:/root/.m2 -w "${CBD}" ${{ matrix.maven_docker_container_image_repo }}/${{ matrix.maven_docker_container_image_name }}:${{ matrix.maven_docker_container_image_tag }} sh -l -c "apk update && apk add -u gnupg && ./mvnw -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} dependency:list-repositories dependency:tree help:active-profiles clean install site site:stage"
+      run: docker container run --rm -i -e MAVEN_GPG_KEY="${{ secrets.MAVEN_GPG_KEY }}" -e MAVEN_GPG_PASSPHRASE="${{ secrets.MAVEN_GPG_PASSPHRASE }}" -v "$(pwd)":"${CBD}" -v ${HOME}/.gnupg:/root/.gnupg -v ${P}-${{ matrix.maven_docker_container_image_tag }}-mvn-repo:/root/.m2 -w "${CBD}" ${{ matrix.maven_docker_container_image_repo }}/${{ matrix.maven_docker_container_image_name }}:${{ matrix.maven_docker_container_image_tag }} sh -l -c "apk update && apk add -u gnupg && ./mvnw -U -V -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }} dependency:list-repositories dependency:tree help:active-profiles clean install site site:stage"
 
     - name: Testing Module
+      env:
+        MAVEN_GPG_KEY: ${{ secrets.MAVEN_GPG_KEY }}
+        MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
       run: >
         ./mvnw -U -V -f testing -s ${{ env.SETTINGS }} -P${{ env.PROFILES }} ${{ env.MAVEN_PROPS }}
         dependency:list-repositories
