@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-26.04]
-        jdk_version: [8.0.512.0+9-zulu, 11.0.33.0+9-zulu, 17.0.21.0+9-zulu, 21.0.12+1.1-zulu, 25.0.4+1.1-zulu]
+        jdk_version: [8.0.512.0+9-zulu, 11.0.33.0+10-zulu, 17.0.21.0+9-zulu, 21.0.13.0+9-zulu, 25.0.5.0+8-zulu]
         include:
           - os: ubuntu-26.04
             jdk_version: 8.0.512.0+9-zulu
@@ -30,10 +30,7 @@ jobs:
 
     steps:
     - name: Checkout Source
-      uses: actions/checkout@v6
-
-    - name: Install GPG and generate test key
-      run: .github/install-gpg.sh
+      uses: actions/checkout@v7
 
     - name: Install SDKMAN and java environment
       run: |
@@ -49,7 +46,7 @@ jobs:
         echo "${JAVA_HOME}/bin" >> $GITHUB_PATH
 
     - name: Setup Maven repository cache
-      uses: actions/cache@v5
+      uses: actions/cache@v6
       env:
         cache-name: m2repo
       with:
