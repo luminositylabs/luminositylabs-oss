@@ -20,7 +20,7 @@ jobs:
             docker_build: true
             maven_docker_container_image_repo: luminositylabs
             maven_docker_container_image_name: openjdk
-            maven_docker_container_image_tag: 21.0.13_zulu-alpine-21.54.107
+            maven_docker_container_image_tag: 21.0.13.0.3_zulu-alpine-21.54.109
     name: Build on OS ${{ matrix.os }} using JDK ${{ matrix.jdk_version }}
     runs-on: ${{ matrix.os }}
     env:
@@ -30,10 +30,7 @@ jobs:
 
     steps:
     - name: Checkout Source
-      uses: actions/checkout@v6
-
-    - name: Install GPG and generate test key
-      run: .github/install-gpg.sh
+      uses: actions/checkout@v7
 
     - name: Install SDKMAN and java environment
       run: |
@@ -49,7 +46,7 @@ jobs:
         echo "${JAVA_HOME}/bin" >> $GITHUB_PATH
 
     - name: Setup Maven repository cache
-      uses: actions/cache@v5
+      uses: actions/cache@v6
       env:
         cache-name: m2repo
       with:
@@ -76,7 +73,7 @@ jobs:
     - name: Skip artifact signing for PRs
       if: ${{ github.event_name == 'pull_request' }}
       run: |
-        echo "MAVEN_PROPS=${MAVEN_PROPS:+-Dgpg.skip=true }" >> $GITHUB_ENV
+        echo "MAVEN_PROPS=${MAVEN_PROPS} -Dgpg.skip=true" >> $GITHUB_ENV
 
     - name: Maven build/test
       env:
