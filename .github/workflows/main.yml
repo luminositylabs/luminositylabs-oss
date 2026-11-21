@@ -19,7 +19,7 @@ jobs:
             docker_build: true
             maven_docker_container_image_repo: luminositylabs
             maven_docker_container_image_name: openjdk
-            maven_docker_container_image_tag: 27.0.1.0.3_zulu-alpine-27.30.109
+            maven_docker_container_image_tag: 27.0.1.1_zulu-alpine-27.30.201
     name: Build on OS ${{ matrix.os }} using JDK ${{ matrix.jdk_version }}
     runs-on: ${{ matrix.os }}
     env:
