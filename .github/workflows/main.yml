@@ -24,7 +24,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       MAVEN_PROPS: -Djavadoc.path=`which javadoc`
-      MVNW_PARAMS: --batch-mode --show-version --update-snapshots
+      MVNW_PARAMS: --batch-mode --no-transfer-progress --show-version --update-snapshots
       PROFILES: bc-signer,release-sign-artifacts,sonatype-central-portal-deployment,sonatype-central-snapshots
       SETTINGS: .github/settings.xml
 
